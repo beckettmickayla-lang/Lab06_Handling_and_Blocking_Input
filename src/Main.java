@@ -2,53 +2,43 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double gasGallons = 0;
-        double fuelEfficiency = 0;
-        double gasPrice = 0;
+        double width = 0;
+        double height = 0;
         boolean done = false;
         String trash = "";
         do {
-            System.out.print("Enter the number of gallons of gas in the tank: ");
+            System.out.print("Enter the height of the rectangle: ");
             if (scanner.hasNextDouble()) {
-                gasGallons = scanner.nextDouble();
+                height = scanner.nextDouble();
                 scanner.nextLine();
                 done = true;
             } else {
                 trash = scanner.nextLine();
-                System.out.print("Please enter a valid number of gallons of gas in the tank. You entered: " + trash);
+                System.out.print("Please enter a valid rectangle height. You entered: " + trash);
             }
         } while (!done);
-        System.out.print("The number of gallons of gas in the tank is " + gasGallons + ". ");
+        System.out.print("The height of the rectangle is " + height + ". ");
         done = false;
         do {
-            System.out.print("Enter the fuel efficiency of the vehicle in miles per gallon: ");
+            System.out.print("Enter the width of the rectangle: ");
             if (scanner.hasNextDouble()) {
-                fuelEfficiency = scanner.nextDouble();
+                width = scanner.nextDouble();
                 scanner.nextLine();
                 done = true;
             } else {
                 trash = scanner.nextLine();
-                System.out.print("Please enter a valid fuel efficiency in miles per gallon. You entered: " + trash);
+                System.out.print("Please enter a valid rectangle width. You entered: " + trash);
             }
         } while (!done);
-        System.out.print("The fuel efficiency in miles per gallon is: " + fuelEfficiency + ". ");
+        System.out.print("The width of the rectangle is: " + width + ". ");
         done = false;
-        do {
-            System.out.print("Enter the price of gas per gallon: ");
-            if (scanner.hasNextDouble()) {
-                gasPrice = scanner.nextDouble();
-                scanner.nextLine();
-                done = true;
-            } else {
-                trash = scanner.nextLine();
-                System.out.print("Please enter a valid price of gas per gallon. You entered: " + gasPrice);
-            }
-        } while (!done) ;
-            System.out.print("The price of gas per gallon is: " + gasPrice + ". ");
-            double cost100Miles = (100 / fuelEfficiency) * gasPrice;
-            double milesWithGas = gasGallons * fuelEfficiency;
-            System.out.print(" The cost per 100 miles is $" + cost100Miles + ". ");
-            System.out.print("The car can go " + milesWithGas + " miles with the available gas.");
+        double area = (width * height);
+        double perimeter = (width * 2 + height * 2);
+        double cSquared = (width * width + height * height);
+        double hypotenuse = Math.sqrt(cSquared);
+            System.out.print(" The are of the rectangle is " + area + ". ");
+            System.out.print("The perimeter of the rectangle is " + perimeter + ". ");
+            System.out.print("The diagonal of the rectangle is " + hypotenuse);
             scanner.close();
         }
     }
