@@ -1,45 +1,29 @@
+import java.util.Random;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double width = 0;
-        double height = 0;
-        boolean done = false;
-        String trash = "";
+        Random rand = new Random();
+        int targetNumber = rand.nextInt(10) + 1;
+        int guess;
         do {
-            System.out.print("Enter the height of the rectangle: ");
-            if (scanner.hasNextDouble()) {
-                height = scanner.nextDouble();
-                scanner.nextLine();
-                done = true;
-            } else {
-                trash = scanner.nextLine();
-                System.out.print("Please enter a valid rectangle height. You entered: " + trash);
+            System.out.print("Guess the whole number between 1 and 10: ");
+            while (!scanner.hasNextInt()) {
+                System.out.print("Invalid input. Please enter a valid number between one to 10.");
+                scanner.next();
             }
-        } while (!done);
-        System.out.print("The height of the rectangle is " + height + ". ");
-        done = false;
-        do {
-            System.out.print("Enter the width of the rectangle: ");
-            if (scanner.hasNextDouble()) {
-                width = scanner.nextDouble();
-                scanner.nextLine();
-                done = true;
-            } else {
-                trash = scanner.nextLine();
-                System.out.print("Please enter a valid rectangle width. You entered: " + trash);
+            guess = scanner.nextInt();
+            if (guess < 1 || guess > 10) {
+                System.out.print("Your guess is out of bounds. Try again with a whole number between 1 and 10.");
             }
-        } while (!done);
-        System.out.print("The width of the rectangle is: " + width + ". ");
-        done = false;
-        double area = (width * height);
-        double perimeter = (width * 2 + height * 2);
-        double cSquared = (width * width + height * height);
-        double hypotenuse = Math.sqrt(cSquared);
-            System.out.print(" The are of the rectangle is " + area + ". ");
-            System.out.print("The perimeter of the rectangle is " + perimeter + ". ");
-            System.out.print("The diagonal of the rectangle is " + hypotenuse);
-            scanner.close();
+        } while (guess < 1 || guess > 10);
+        System.out.print("The computer's random number was: " + targetNumber);
+        if (guess > targetNumber) {
+            System.out.print(". Your guess was high!");
+        } else if (guess < targetNumber) {
+            System.out.print(". Your guess was low!");
+        } else {
+            System.out.print(". Your guess was spot-on!");
         }
     }
-
+}
